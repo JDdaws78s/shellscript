@@ -1,16 +1,14 @@
 #!/bin/bash
 
-RAM_USAGE=$(top | awk -F " " '{print $11F}')
+TOP=$(top)
 THRESHOLD_VALUE=0.01
 
 
 while IFS= read -r line
 do
-    if [ $line -ge $THRESHOLD_VALUE ]
+    RAM_USAGE=$(echo "$line | awk -F " " '{print $11F}'")
+    if [ $RAM_USAGE -ge $THRESHOLD_VALUE ]
     then
         echo "$line is more the the $THRESHOLD_VALUE"
-    else
-        echo "11"
-        exit 1
     fi
-done <<< $RAM_USAGE
+done <<< $TOP
