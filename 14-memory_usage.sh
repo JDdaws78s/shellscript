@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TOP=$(top)
-THRESHOLD_VALUE=0.01
+THRESHOLD_VALUE=0.1
 
 
 while IFS= read -r line
