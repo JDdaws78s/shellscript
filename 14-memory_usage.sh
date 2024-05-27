@@ -9,6 +9,8 @@ do
     RAM_USAGE=$(echo $line | awk -F " " '{print $11F}')
     if [ $RAM_USAGE -ge $THRESHOLD_VALUE ]
     then
-        echo "$RAM_USAGE is more the the $THRESHOLD_VALUE"
+        Message="$RAM_USAGE is more than the $THRESHOLD_VALUE"
     fi
 done <<< $TOP
+
+echo "$Message"
